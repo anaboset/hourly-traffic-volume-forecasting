@@ -50,7 +50,7 @@ The main objectives of this project are to:
 
 The project uses the **Metro Interstate Traffic Volume** dataset.
 
-The dataset contains approximately 48,000 hourly observations of traffic volume on Interstate 94, together with additional weather and calendar-related information.
+The dataset contains approximately 48,000 hourly observations of traffic volume on Interstate 94, together with weather and calendar-related information.
 
 ### Main information includes:
 
@@ -63,11 +63,11 @@ The dataset contains approximately 48,000 hourly observations of traffic volume 
 - Weather description
 - Holiday information
 
-The raw dataset is **not included in this repository** because it is a relatively large data file and is not necessary to duplicate in the Git repository.
+The raw dataset is **not included in this repository** because it is a relatively large data file.
 
 The dataset can be obtained from the original UCI Machine Learning Repository:
 
-https://archive.ics.uci.edu/dataset/492/metro+interstate+traffic+volume
+[Metro Interstate Traffic Volume Dataset](https://archive.ics.uci.edu/dataset/492/metro+interstate+traffic+volume)
 
 ---
 
@@ -85,15 +85,17 @@ The raw traffic dataset was loaded and inspected for:
 - Data types
 - Invalid or inconsistent records
 
-The timestamp column was converted to a datetime format and used as the time index.
+The timestamp column was converted to datetime format and used as the time index.
 
 Duplicate timestamps were investigated before being removed.
 
 ### 2. Time-Series Preparation
 
-The dataset was organized into a continuous hourly time series.
+The dataset was organized into hourly time-series segments.
 
-Weather-related missing values were handled using appropriate interpolation or forward-filling techniques, while traffic-volume gaps were preserved where necessary to avoid introducing artificial target values.
+Large temporal gaps were handled separately to prevent artificial continuity across disconnected periods.
+
+Weather-related missing values were handled using appropriate forward-filling or interpolation techniques within valid segments, while traffic-volume gaps were preserved where necessary to avoid introducing artificial target values.
 
 ### 3. Exploratory Data Analysis
 
@@ -130,7 +132,7 @@ These represent:
 
 ### Rolling Features
 
-Rolling statistics were also created, including:
+Rolling statistics were created using:
 
 - 3-hour rolling mean
 - 3-hour rolling standard deviation
@@ -147,8 +149,9 @@ Calendar-based features included:
 - Day of week
 - Month
 - Weekend indicator
+- Holiday indicator
 
-Cyclical transformations were also used to represent repeating time patterns.
+Cyclical transformations were also used to represent repeating temporal patterns.
 
 ---
 
@@ -166,12 +169,15 @@ This provides a simple benchmark for determining whether more complex models pro
 
 ## 2. Prophet
 
-Prophet was used as a statistical time-series forecasting model capable of representing:
+Prophet was used as a statistical time-series forecasting model.
 
-- Trend
-- Seasonality
-- Holiday effects
-- Changing temporal patterns
+The implementation included:
+
+- Daily seasonality
+- Weekly seasonality
+- Yearly seasonality
+- Weather-related regressors
+- Holiday-related information
 
 Prophet provides a useful comparison against machine learning and deep learning approaches.
 
@@ -179,11 +185,17 @@ Prophet provides a useful comparison against machine learning and deep learning 
 
 ## 3. XGBoost
 
-XGBoost was trained using engineered temporal, lag, rolling, and calendar features.
+XGBoost was trained using engineered temporal, lag, rolling, calendar, and weather features.
 
-The model is particularly useful for learning nonlinear relationships between historical traffic patterns and future traffic volume.
+The model was trained independently for each forecasting horizon:
 
-XGBoost was evaluated independently for each forecasting horizon.
+- 1 hour
+- 3 hours
+- 6 hours
+- 12 hours
+- 24 hours
+
+XGBoost was evaluated using expanding-window time-series cross-validation before final testing.
 
 ---
 
@@ -191,9 +203,11 @@ XGBoost was evaluated independently for each forecasting horizon.
 
 A Long Short-Term Memory (LSTM) neural network was implemented to model sequential dependencies in traffic-volume observations.
 
-LSTM is designed to learn temporal relationships and can capture patterns that may be difficult for traditional models to represent.
+The LSTM used sequences of historical observations together with weather and temporal features.
 
-The LSTM model was evaluated using the same forecasting horizons as the other models.
+The model was evaluated across the same five forecasting horizons as the other models.
+
+The final trained LSTM model and scaler are included in the `models/` directory.
 
 ---
 
@@ -205,27 +219,27 @@ Three metrics were used to evaluate forecasting performance.
 
 MAE measures the average absolute difference between predicted and actual traffic volume.
 
-Lower values indicate better performance.
+**Lower values indicate better performance.**
 
 ### Symmetric Mean Absolute Percentage Error (sMAPE)
 
 sMAPE measures forecasting error as a percentage while treating positive and negative errors symmetrically.
 
-Lower values indicate better performance.
+**Lower values indicate better performance.**
 
 ### Mean Absolute Scaled Error (MASE)
 
-MASE compares model performance against a baseline forecast.
+MASE compares model performance against a seasonal baseline.
 
-A MASE value below 1 indicates that the model performs better than the corresponding baseline.
+A MASE value below 1 indicates that the model performs better than the baseline.
 
-Lower values are better.
+**Lower values are better.**
 
 ---
 
 # 📈 Results
 
-The models were evaluated on the test set at five forecasting horizons:
+The models were evaluated on the final test set at five forecasting horizons:
 
 - 1 hour
 - 3 hours
@@ -243,11 +257,13 @@ The models were evaluated on the test set at five forecasting horizons:
 | 12 hours | **LSTM** | **274.6781** | **12.1764** | **0.8105** |
 | 24 hours | **Seasonal Naive** | **318.6929** | **11.6681** | **0.9404** |
 
-The complete model comparison is available in:
+### Complete Results
+
+The complete comparison of all four models and all forecasting horizons is available in:
 
 [`results/final_model_comparison.csv`](results/final_model_comparison.csv)
 
-A summary containing the best model for each horizon is available in:
+The best-performing model for each horizon is summarized in:
 
 [`results/best_model_by_horizon.csv`](results/best_model_by_horizon.csv)
 
@@ -261,19 +277,19 @@ XGBoost achieved the best performance at the 1-hour, 3-hour, and 6-hour horizons
 
 Its strongest result was obtained at the 1-hour horizon:
 
-- MAE: **176.1365**
-- sMAPE: **7.4493%**
-- MASE: **0.5197**
+- **MAE:** 176.1365
+- **sMAPE:** 7.4493%
+- **MASE:** 0.5197
 
-This demonstrates the effectiveness of lag, rolling, and calendar features for short-term traffic prediction.
+This demonstrates the effectiveness of lag, rolling, calendar, and weather features for short-term traffic prediction.
 
 ### Medium-Term Forecasting
 
 At the 12-hour horizon, LSTM achieved the best performance:
 
-- MAE: **274.6781**
-- sMAPE: **12.1764%**
-- MASE: **0.8105**
+- **MAE:** 274.6781
+- **sMAPE:** 12.1764%
+- **MASE:** 0.8105
 
 This suggests that the sequential model was able to capture useful temporal dependencies at this forecasting horizon.
 
@@ -281,9 +297,9 @@ This suggests that the sequential model was able to capture useful temporal depe
 
 At the 24-hour horizon, the Seasonal Naive baseline achieved the best performance:
 
-- MAE: **318.6929**
-- sMAPE: **11.6681%**
-- MASE: **0.9404**
+- **MAE:** 318.6929
+- **sMAPE:** 11.6681%
+- **MASE:** 0.9404
 
 This result demonstrates the strength of the daily seasonal pattern in the traffic data.
 
@@ -304,11 +320,12 @@ The best-performing approach depends on how far into the future the prediction i
 - **XGBoost** is the strongest model for short-term forecasting up to 6 hours.
 - **LSTM** performs best at the 12-hour horizon.
 - **Seasonal Naive** performs best at the 24-hour horizon.
-- **Prophet** performs poorly compared with the other approaches in this experiment.
+- **Prophet** performed poorly compared with the other approaches in this experiment.
 
 These results highlight the importance of evaluating forecasting models across multiple horizons rather than selecting a model based on a single prediction horizon.
 
 ---
+
 # 📁 Project Structure
 
 ```text
@@ -327,10 +344,17 @@ traffic-volume-forecasting/
 │   ├── Prophet/
 │   └── xgboost/
 │
+├── models/
+│   ├── lstm_final.keras
+│   ├── lstm_scaler.pkl
+│   ├── xgboost_1h_final.pkl
+│   ├── xgboost_3h_final.pkl
+│   ├── xgboost_6h_final.pkl
+│   ├── xgboost_12h_final.pkl
+│   └── xgboost_24h_final.pkl
+│
 ├── notebooks/
 │   └── Trafic_Hourly_Forcasting(3).ipynb
-│
-├── models/
 │
 ├── results/
 │   ├── best_model_by_horizon.csv
