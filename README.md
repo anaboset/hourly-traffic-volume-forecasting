@@ -8,8 +8,6 @@
 
 A multi-horizon time-series forecasting project for predicting hourly traffic volume using statistical, machine learning, and deep learning approaches.
 
-A multi-horizon time-series forecasting project for predicting hourly traffic volume using statistical, machine learning, and deep learning approaches.
-
 The project evaluates four forecasting models across multiple prediction horizons and compares their performance using MAE, sMAPE, and MASE.
 
 ---
@@ -83,8 +81,8 @@ The dataset can be obtained from the original UCI Machine Learning Repository:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/samuel-nigussie/traffic-volume-forecasting.git
-cd traffic-volume-forecastingb: 
+git clone https://github.com/anaboset/hourly-traffic-volume-forecasting
+cd hourly-traffic-volume-forecasting: 
 ```
 ### 2. Install Dependencies
 ```pip install -r requirements.txt```
@@ -371,13 +369,13 @@ These results highlight the importance of evaluating forecasting models across m
 # 📁 Project Structure
 
 ```text
-traffic-volume-forecasting/
+hourlt-traffic-volume-forecasting/
 │
 ├── data/
 │   └── # Raw dataset not included in repository
 │
 ├── docs/
-│   └── Trafic_hourly_forcasting.pdf
+│   └── Traffic_hourly_forecasting.pdf
 │
 ├── figures/
 │   ├── comparison/
@@ -396,7 +394,7 @@ traffic-volume-forecasting/
 │   └── xgboost_24h_final.pkl
 │
 ├── notebooks/
-│   └── Trafic_Hourly_Forcasting(3).ipynb
+│   └── Traffic_Hourly_Forecasting(3).ipynb
 │
 ├── results/
 │   ├── best_model_by_horizon.csv
