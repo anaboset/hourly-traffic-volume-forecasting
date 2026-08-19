@@ -309,14 +309,13 @@ The best-performing approach depends on how far into the future the prediction i
 These results highlight the importance of evaluating forecasting models across multiple horizons rather than selecting a model based on a single prediction horizon.
 
 ---
-
 # 📁 Project Structure
 
 ```text
 traffic-volume-forecasting/
 │
 ├── data/
-│   └── README.md
+│   └── # Raw dataset not included in repository
 │
 ├── docs/
 │   └── Trafic_hourly_forcasting.pdf
@@ -324,10 +323,12 @@ traffic-volume-forecasting/
 ├── figures/
 │   ├── comparison/
 │   ├── eda/
+│   ├── Lstm/
+│   ├── Prophet/
 │   └── xgboost/
 │
 ├── notebooks/
-│   └── Trafic_Hourly_Forcasting(2).ipynb
+│   └── Trafic_Hourly_Forcasting(3).ipynb
 │
 ├── models/
 │
