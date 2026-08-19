@@ -84,36 +84,33 @@ The dataset can be obtained from the original UCI Machine Learning Repository:
 
 ```bash
 git clone https://github.com/samuel-nigussie/traffic-volume-forecasting.git
-cd traffic-volume-forecastingb:
-
-2. Install Dependencies
-pip install -r requirements.txt
-3. Download the Dataset
+cd traffic-volume-forecastingb: 
+```
+### 2. Install Dependencies
+```pip install -r requirements.txt```
+### 3. Download the Dataset
 
 Download the Metro Interstate Traffic Volume dataset from the UCI Machine Learning Repository and place it inside the data/ directory.
-
 The raw dataset is not included in this repository because of its size.
 
-4. Run the Project
+### 4. Run the Project
 
-Open the following notebook using Jupyter Notebook, JupyterLab, or Google Colab:
-
-notebooks/Trafic_Hourly_Forcasting(3).ipynb
-
+ Open the following notebook using Jupyter Notebook, JupyterLab, or Google Colab:
+ ``` notebooks/Trafic_Hourly_Forcasting(3).ipynb```
 Run the notebook cells sequentially to reproduce the data preprocessing, feature engineering, model training, validation, and evaluation process.
 
-5. View the Results
+### 5. View the Results
 
 The complete model comparison is available in:
 
-results/final_model_comparison.csv
+``` results/final_model_comparison.csv```
 
 The best model for each forecasting horizon is available in:
 
-results/best_model_by_horizon.csv
+``` results/best_model_by_horizon.csv```
 
 The complete project documentation is available in:
-
+```
 docs/Trafic_hourly_forcasting.pdf
 ```
 ## 🔧 Methodology
