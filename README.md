@@ -1,5 +1,13 @@
 # Hourly Traffic Volume Forecasting
 
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)
+![XGBoost](https://img.shields.io/badge/XGBoost-Enabled-orange.svg)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-LSTM-yellow.svg)
+![Prophet](https://img.shields.io/badge/Prophet-Time%20Series-purple.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+
+A multi-horizon time-series forecasting project for predicting hourly traffic volume using statistical, machine learning, and deep learning approaches.
+
 A multi-horizon time-series forecasting project for predicting hourly traffic volume using statistical, machine learning, and deep learning approaches.
 
 The project evaluates four forecasting models across multiple prediction horizons and compares their performance using MAE, sMAPE, and MASE.
