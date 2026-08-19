@@ -4,7 +4,7 @@
 ![XGBoost](https://img.shields.io/badge/XGBoost-Enabled-orange.svg)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-LSTM-yellow.svg)
 ![Prophet](https://img.shields.io/badge/Prophet-Time%20Series-purple.svg)
-![License](https://img.shields.io/badge/License-MIT-green.svg)
+
 
 A multi-horizon time-series forecasting project for predicting hourly traffic volume using statistical, machine learning, and deep learning approaches.
 
@@ -82,7 +82,6 @@ The dataset can be obtained from the original UCI Machine Learning Repository:
 
 ### 1. Clone the Repository
 
-```bash
 git clone https://github.com/samuel-nigussie/traffic-volume-forecasting.git
 cd traffic-volume-forecasting
 
