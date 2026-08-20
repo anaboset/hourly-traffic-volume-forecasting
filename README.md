@@ -12,6 +12,10 @@ The project evaluates four forecasting models across multiple prediction horizon
 
 ---
 
+![project banner](traffic.png)
+
+---
+
 ## 📌 Project Overview
 
 Accurate traffic-volume forecasting is important for transportation planning, congestion management, infrastructure utilization, and intelligent transportation systems.
