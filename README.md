@@ -99,24 +99,16 @@ The raw dataset is not included in this repository because of its size.
 
 ### 4. Run the Project
 
- Open the following notebook using Jupyter Notebook, JupyterLab, or Google Colab:
- ``` notebooks/Traffic_Hourly_Forecasting(3).ipynb```
-Run the notebook cells sequentially to reproduce the data preprocessing, feature engineering, model training, validation, and evaluation process.
+ Open [this notebook](notebooks/Traffic_Hourly_Forecasting(3).ipynb) using Jupyter Notebook, JupyterLab, or Google Colab: Run the notebook cells sequentially to reproduce the data preprocessing, feature engineering, model training, validation, and evaluation process.
 
 ### 5. View the Results
 
-The complete model comparison is available in:
+The complete model comparison is available [here](results/final_model_comparison.csv)
 
-``` results/final_model_comparison.csv```
+The best model for each forecasting horizon is available [here](results/best_model_by_horizon.csv)
 
-The best model for each forecasting horizon is available in:
+The complete project documentation is available [here](docs/Traffic_hourly_forecasting.pdf)
 
-``` results/best_model_by_horizon.csv```
-
-The complete project documentation is available in:
-```
-docs/Traffic_hourly_forecasting.pdf
-```
 ## 🔧 Methodology
 
 The forecasting pipeline consists of several stages.
@@ -417,3 +409,4 @@ hourly-traffic-volume-forecasting/
 ├── requirements.txt
 ├── traffic.png
 └── README.md
+
