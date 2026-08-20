@@ -410,3 +410,8 @@ hourly-traffic-volume-forecasting/
 ├── traffic.png
 └── README.md
 
+---
+
+### 🎓 Project Context
+
+Built during the **INSA Summer Camp 2026**, as part of practical work exploring time-series forecasting, machine learning, and deep learning.
