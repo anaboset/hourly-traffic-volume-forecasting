@@ -355,6 +355,16 @@ Its MASE remained approximately 1.8 across the forecasting horizons, indicating 
 
 ---
 
+## ⚠️ Limitations
+
+- The dataset represents traffic from a single interstate location, so results may not generalize to other roads or regions.
+- The models were evaluated on historical data and may perform differently under unusual events or traffic disruptions.
+- The available weather and calendar features may not capture all factors affecting traffic volume.
+- LSTM performance can be sensitive to architecture and hyperparameter choices.
+- The study focuses on point forecasts and does not provide prediction intervals or uncertainty estimates.
+
+---
+
 # 🏆 Overall Conclusion
 
 The experiments demonstrate that there is **no single model that dominates across every forecasting horizon**.
