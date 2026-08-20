@@ -89,7 +89,9 @@ git clone https://github.com/anaboset/hourly-traffic-volume-forecasting
 cd hourly-traffic-volume-forecasting: 
 ```
 ### 2. Install Dependencies
-```pip install -r requirements.txt```
+```bash
+pip install -r requirements.txt
+```
 ### 3. Download the Dataset
 
 Download the Metro Interstate Traffic Volume dataset from the UCI Machine Learning Repository and place it inside the data/ directory.
