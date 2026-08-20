@@ -383,7 +383,7 @@ These results highlight the importance of evaluating forecasting models across m
 # 📁 Project Structure
 
 ```text
-hourlt-traffic-volume-forecasting/
+hourly-traffic-volume-forecasting/
 
 ├── docs/
 │   └── Traffic_hourly_forecasting.pdf
