@@ -98,7 +98,7 @@ The raw dataset is not included in this repository because of its size.
 ### 4. Run the Project
 
  Open the following notebook using Jupyter Notebook, JupyterLab, or Google Colab:
- ``` notebooks/Trafic_Hourly_Forcasting(3).ipynb```
+ ``` notebooks/Traffic_Hourly_Forecasting(3).ipynb```
 Run the notebook cells sequentially to reproduce the data preprocessing, feature engineering, model training, validation, and evaluation process.
 
 ### 5. View the Results
