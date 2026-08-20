@@ -113,7 +113,7 @@ The best model for each forecasting horizon is available in:
 
 The complete project documentation is available in:
 ```
-docs/Trafic_hourly_forcasting.pdf
+docs/Traffic_hourly_forecasting.pdf
 ```
 ## 🔧 Methodology
 
@@ -384,10 +384,7 @@ These results highlight the importance of evaluating forecasting models across m
 
 ```text
 hourlt-traffic-volume-forecasting/
-│
-├── data/
-│   └── # Raw dataset not included in repository
-│
+
 ├── docs/
 │   └── Traffic_hourly_forecasting.pdf
 │
@@ -416,4 +413,5 @@ hourlt-traffic-volume-forecasting/
 │
 ├── .gitignore
 ├── requirements.txt
+├── traffic.png
 └── README.md
